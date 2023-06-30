@@ -18,26 +18,30 @@ describe('Restaurant and Menu Models', () => {
 
     test('can create a Restaurant', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        expect(await Restaurant.create(seedRestaurant[0])).toEqual(seedRestaurant[0])
     });
-
     test('can create a Menu', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        expect(await Menu.create(seedMenu[0])).toEqual(seedMenu[0])
     });
 
     test('can find Restaurants', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        expect(await Restaurant.findByPk(1)).toEqual(seedRestaurant[0])
     });
 
     test('can find Menus', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        expect( await Menu.findByPk(1)).toEqual(seedMenu[0])
     });
 
     test('can delete Restaurants', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        let destroyedR = await Restaurant.destroy({
+            where: {
+                name: 'AppleBees'
+            }
+        })
+        expect(destroyedR).toEqual(1)
     });
 })
